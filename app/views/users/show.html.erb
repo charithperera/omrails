@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>Foods</h1>
+  <h1><%= @user.username %></h1>
+  <p><%= @user.name %></p>
 
-  <h2 class="text-center"><%= link_to current_user.username, user_path(current_user.username)%></h2>
-
+  <h2 class="text-center">My Foods</h2>
   <table class="table">
     <thead>
       <tr>
@@ -28,10 +28,4 @@
       <% end %>
     </tbody>
   </table>
-
-  <br>
-
-  <% if user_signed_in? %>
-    <%= link_to 'New Food', new_food_path %>
-  <% end %>
 </div>
