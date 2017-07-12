@@ -1,6 +1,8 @@
 <div class="container">
-  <h1><%= @user.username %></h1>
-  <p><%= @user.name %></p>
+  <% unless @user.nil? %>
+    <h1><%= @user.username %></h1>
+    <p><%= @user.name %></p>
+  <% end %>
 
   <h2 class="text-center">My Foods</h2>
   <table class="table">
