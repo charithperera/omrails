@@ -1,7 +1,10 @@
 <div class="container">
   <h1>Foods</h1>
-
-  <h2 class="text-center"><%= link_to current_user.username, user_path(current_user.username)%></h2>
+  <% if user_signed_in? %>
+    <h2 class="text-center"><%= link_to current_user.username, user_path(current_user.username)%></h2>
+  <% else %>
+    <h2 class="text-center"><%= link_to 'Sign Up Now!', signup_path %></h2>
+  <% end %>
 
   <table class="table">
     <thead>
