@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/:username', to: 'users#show', as: 'user'
-
-  resources :foods
-  resources :tweets
   ActiveAdmin.routes(self)
   devise_for :users
   as :user do
@@ -10,6 +6,18 @@ Rails.application.routes.draw do
     delete 'signout', to: 'devise/sessions#destroy'
     get 'signup', to: 'devise/registrations#new'
   end
+
+  get 'users/:username', to: 'users#show', as: 'user'
+
+  resources :foods do
+    member do
+      post 'vote', to: 'votes#create'
+      delete 'unvote', to: 'votes#destroy'
+    end
+  end
+  resources :tweets
+
+
   root 'pages#home'
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
